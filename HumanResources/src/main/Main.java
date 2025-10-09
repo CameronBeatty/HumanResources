@@ -33,7 +33,11 @@ public class Main
 	{
 		
 		System.out.println();
-		
+		String testName = "Mario";
+		int testWeight = 25;
+		int testHeight = 6;
+		Person testPerson = new Person(testName, testWeight, testHeight);
+		System.out.println(testPerson.toString());
 		/*
 		// Don't overcomplicate the data
 		// reading. After skipping the
