@@ -1,14 +1,19 @@
 package main;
 
+//Each instance of Person stores one specific persons
+//information from a data file containing
+//a list of peoples information.
 public class Person 
 {
 	//instance variables
 	private String name;
-	private int weight;
-	private int height;
+	private double weight;
+	private double height;
 	
 	//Constructor
-	public Person(String name, int weight, int height)
+	//take name height and weight from main
+	//that was read in and assign it to the specific person
+	public Person(String name, double weight, double height)
 	{
 		this.name = name;
 		this.weight = weight;
@@ -17,9 +22,10 @@ public class Person
 	
 	@Override
 	//toString
+	//creates formatted row of data in name, height, weight order
 	public String toString()
 	{
-		return String.format("%-9s %-12d %-4d", this.name, this.weight, this.height);
+		return String.format("%-9s %-12.2f %-4.2f", this.name, this.height, this.weight);
 	}
 }
 
