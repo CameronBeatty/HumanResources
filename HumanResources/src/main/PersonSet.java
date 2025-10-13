@@ -1,7 +1,8 @@
 package main;
 
 import java.util.ArrayList;
-
+//Essentially is one big ArrayList to store
+//Person's and has methods to add and get them.
 public class PersonSet implements PersonList {
 	
 	//instance variable

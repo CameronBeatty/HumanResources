@@ -25,7 +25,7 @@ public class Person
 	//creates formatted row of data in name, height, weight order
 	public String toString()
 	{
-		return String.format("%-9s %-12.2f %-4.2f", this.name, this.height, this.weight);
+		return String.format("%-9s %10.2f %12.2f", this.name, this.height, this.weight);
 	}
 }
 
