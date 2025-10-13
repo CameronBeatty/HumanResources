@@ -18,11 +18,16 @@ public class PersonSet implements PersonList {
 	}
 	
 	//Takes a Person from main
-	//and add's it to the listOfPeople
-	//ArrayList
+	//and adds it to the listOfPeople
+	//ArrayList if that person
+	//is not yet in the list
 	public void add(Person person)
 	{
-		listOfPeople.add(person);
+		if(!(listOfPeople.contains(person)))
+		{
+			listOfPeople.add(person);
+		}
+		
 	}
 	
 	//Receives an index from main
@@ -30,6 +35,13 @@ public class PersonSet implements PersonList {
 	public Person get(int index)
 	{
 		return listOfPeople.get(index);
+	}
+	
+	//returns how man people are
+	//in the list
+	public int getListLength()
+	{
+		return listOfPeople.size();
 	}
 	
 }

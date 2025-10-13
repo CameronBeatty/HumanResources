@@ -54,7 +54,6 @@ public class Main
 	{
 		//tracks how many people have been
 		//added to set
-		int personCount = 0;
 		System.out.println();
 		
 		//Test Person
@@ -97,8 +96,6 @@ public class Main
 				Person person = new Person(name, weight, height);
 				//add the person to the set
 				set.add(person);
-				//another person has been added
-				personCount++;
 			}
 			fileReader.close();
 		}
@@ -117,7 +114,7 @@ public class Main
 		//Loops through each person and prints their info
 		//by using set.get to get a person and then calling
 		//that persons toString
-		for(int i = 0; i < personCount; i++)
+		for(int i = 0; i < set.getListLength(); i++)
 		{
 			System.out.println(set.get(i).toString());
 		}
