@@ -3,7 +3,8 @@ package main;
 //Each instance of Person stores one specific persons
 //information from a data file containing
 //a list of peoples information.
-public class Person 
+//https://www.geeksforgeeks.org/java/comparable-interface-in-java-with-examples/
+public class Person implements Comparable<Person> 
 {
 	//instance variables
 	private String name;
@@ -18,6 +19,38 @@ public class Person
 		this.name = name;
 		this.weight = weight;
 		this.height = height;
+	}
+	
+	public Person(Person person)
+	{
+		this.name = person.name;
+		this.weight = person.weight;
+		this.height = person.height;
+	}
+	//get name
+	public String getName()
+	{
+		return this.name;
+	}
+	//get weight
+	public double getWeight()
+	{
+		return this.weight;
+	}
+	//get height
+	public double getHeight()
+	{
+		return this.height;
+	}
+	
+	public void convertHeight()
+	{
+		this.height = (this.height)/2.54;
+	}
+	
+	public void convertWeight()
+	{
+		this.weight = (this.weight)*2.205;
 	}
 	
 	@Override
@@ -59,6 +92,13 @@ public class Person
 	public String toString()
 	{
 		return String.format("%-9s %10.2f %12.2f", this.name, this.height, this.weight);
+	}
+	
+	@Override
+	//https://stackoverflow.com/questions/22871583/implements-comparable-to-get-alphabetical-sort-with-strings
+	public int compareTo(Person other)
+	{
+		return this.name.compareTo(other.name);
 	}
 }
 

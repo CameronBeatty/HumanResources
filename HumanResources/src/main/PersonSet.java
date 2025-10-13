@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 //Essentially is one big ArrayList to store
 //Person's and has methods to add and get them.
 public class PersonSet implements PersonList {
@@ -23,11 +24,7 @@ public class PersonSet implements PersonList {
 	//is not yet in the list
 	public void add(Person person)
 	{
-		if(!(listOfPeople.contains(person)))
-		{
-			listOfPeople.add(person);
-		}
-		
+		listOfPeople.add(person);
 	}
 	
 	//Receives an index from main
@@ -42,6 +39,55 @@ public class PersonSet implements PersonList {
 	public int getListLength()
 	{
 		return listOfPeople.size();
+	}
+	
+	@Override
+	//Puts each persons data on one
+	//formatted line as a string, and complies
+	//all the strings to create a sheet of all
+	//data in one string
+	public String toString()
+	{
+		//entire sheet of data
+		String personData = "";
+		//Object and Person for typecast
+		Object o;
+		Person p;
+		for(int i = 0; i < listOfPeople.size(); i++)
+		{
+			//type cast current object in list
+			//to person type
+			o = listOfPeople.get(i);
+			p = (Person) o;
+			//add the persons data to a formatted line
+			//and add that line to the entire sheet
+			personData = personData + 
+					String.format("%-9s %10.2f %12.2f\n", 
+							p.getName(), p.getHeight(), p.getWeight());
+		}
+		return personData;
+	}
+	//Overload toString()
+	public String toString(ArrayList<Person> list)
+	{
+		//entire sheet of data
+		String personData = "";
+		//Object and Person for typecast
+		Object o;
+		Person p;
+		for(int i = 0; i < list.size(); i++)
+		{
+			//type cast current object in list
+			//to person type
+			o = list.get(i);
+			p = (Person) o;
+			//add the persons data to a formatted line
+			//and add that line to the entire sheet
+			personData = personData + 
+					String.format("%-9s %10.2f %12.2f\n", 
+							p.getName(), p.getHeight(), p.getWeight());
+		}
+		return personData;
 	}
 	
 }

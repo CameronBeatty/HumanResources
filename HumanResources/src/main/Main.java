@@ -67,6 +67,9 @@ public class Main
 		
 		//Instantiates a new PersonSet named set
 		PersonSet set = new PersonSet();
+		PersonOrderedSet orderedSet = new PersonOrderedSet();
+		PersonImperialSet imperialSet = new PersonImperialSet();
+		
 		
 		// Don't overcomplicate the data
 		// reading. After skipping the
@@ -94,8 +97,10 @@ public class Main
 				//create a new instance of person with
 				//the read in name, weight, and height
 				Person person = new Person(name, weight, height);
+				Person convertP = new Person(person);
 				//add the person to the set
-				set.add(person);
+				orderedSet.add(person);
+				imperialSet.add(convertP);
 			}
 			fileReader.close();
 		}
@@ -106,7 +111,10 @@ public class Main
 			System.exit(1);
 		}
 		
-		//PRINT OUT DATA UNSORTED
+		orderedSet.createList();
+		
+		/*
+		//PRINT OUT DATA SORTED
 		//Header
 		String header = String.format("%-9s %-12s %-12s", 
 				"Name", "Height (cm)", "Weight (kg)");
@@ -118,6 +126,10 @@ public class Main
 		{
 			System.out.println(set.get(i).toString());
 		}
+		
+		//TEST PersonSet toString()
+		System.out.println(set.toString());
+		*/
 		
 		//TEST FILE WRITING
 		try
