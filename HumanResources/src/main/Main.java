@@ -3,14 +3,15 @@ package main;
 //Name: Cameron Beatty
 //Date: 10/09/2025
 //Class: CSCI2260 (U01)
-//Purpose:To create the first half of a
-//program that reads in data from a text file,
-//sorts the data, removes duplicates, converts
-//the data from metric to imperial, and outputs
-//that newly sorted data to a new text file.
-//For the first half all that is needed is the file
-//input, reading, and printing to confirm that the
-//data was read in correctly.
+//Purpose:To create a program that reads
+//in data from a "hr.txt" file. The data
+//is then separately sorted alphabetically
+//and converted from metric to imperial.
+//the data is then output both to the command
+//line and to two separate txt files. One
+//output is alphabetically sorted with
+//metric units and the second is unsorted
+//with imperial units.
 
 /*
 This code is provided to give you a
@@ -52,31 +53,12 @@ public class Main
 {
 	public static void main(String[] args) 
 	{
-		//tracks how many people have been
-		//added to set
-		System.out.println();
-		
-		//Test Person
-		/*
-		String testName = "Mario";
-		double testWeight = 25;
-		double testHeight = 6;
-		Person testPerson = new Person(testName, testWeight, testHeight);
-		System.out.println(testPerson.toString());
-		*/
-		
 		//Instantiates a new PersonSet named set
 		PersonSet set = new PersonSet();
 		PersonOrderedSet orderedSet = new PersonOrderedSet();
 		PersonImperialSet imperialSet = new PersonImperialSet();
 		
-		
-		// Don't overcomplicate the data
-		// reading. After skipping the
-		// first row, you can use the 
-		// following to read a row of
-		// character info, assuming your
-		// Scanner is named "fileReader"
+		//Try to read in data from file on arg[0]
 		try
 		{
 			//get file from args[0]
@@ -110,39 +92,36 @@ public class Main
 			System.out.println("ERROR FILE CANNOT BE FOUND");
 			System.exit(1);
 		}
-		
-		orderedSet.createList();
-		
-		/*
-		//PRINT OUT DATA SORTED
-		//Header
-		String header = String.format("%-9s %-12s %-12s", 
-				"Name", "Height (cm)", "Weight (kg)");
-		System.out.println(header);
-		//Loops through each person and prints their info
-		//by using set.get to get a person and then calling
-		//that persons toString
-		for(int i = 0; i < set.getListLength(); i++)
-		{
-			System.out.println(set.get(i).toString());
-		}
-		
-		//TEST PersonSet toString()
-		System.out.println(set.toString());
-		*/
-		
-		//TEST FILE WRITING
+
+		System.out.println("Alphapetically Ordered:");
+		String orderedList = orderedSet.createList();
+		System.out.println("Imperial Conversion:");
+		String imperialList = imperialSet.createList();
+
+		//FILE WRITING
 		try
 		{	
-			FileWriter fileWriterOrder = new FileWriter("outputfile.txt");
-			fileWriterOrder.write("testing");
-			fileWriterOrder.close();
+			//two file writers, one for each file
+			//alphabetically sorted data and 
+			//metric to imperial data
+			FileWriter orderedFw = new FileWriter("hr_ordered_set_output.txt");
+			FileWriter imperialFw = new FileWriter("hr_imperial_set_output.txt");
+			//write the files using
+			//the string from the createList
+			//methods in both sets
+			orderedFw.write(orderedList);
+			imperialFw.write(imperialList);
+			//close file writers
+			orderedFw.close();
+			imperialFw.close();
 		}
+		//catch input/output errors
 		catch(IOException e)
 		{
 			e.printStackTrace();
 			System.out.println(e);
 			System.exit(1);
 		}
-	}
-}
+		
+	}//END main method 
+}//END public class Main
