@@ -9,7 +9,8 @@ public class PersonSet implements PersonList {
 	//instance variable
 	//an ArrayList of people(Person's), to sort all
 	//instances of Person
-	private ArrayList<Person> listOfPeople;
+	//MUST BE PROTECTED so sub-classes can use
+	protected ArrayList<Person> listOfPeople;
 	
 	//Constructor
 	//instantiates the sets ArrayList
@@ -67,28 +68,5 @@ public class PersonSet implements PersonList {
 		}
 		return personData;
 	}
-	//Overload toString()
-	public String toString(ArrayList<Person> list)
-	{
-		//entire sheet of data
-		String personData = "";
-		//Object and Person for typecast
-		Object o;
-		Person p;
-		for(int i = 0; i < list.size(); i++)
-		{
-			//type cast current object in list
-			//to person type
-			o = list.get(i);
-			p = (Person) o;
-			//add the persons data to a formatted line
-			//and add that line to the entire sheet
-			personData = personData + 
-					String.format("%-9s %10.2f %12.2f\n", 
-							p.getName(), p.getHeight(), p.getWeight());
-		}
-		return personData;
-	}
-	
 }
 

@@ -6,18 +6,10 @@ import java.util.Collections;
 //metric data points to imperial and
 //then putting them in a formatted table
 public class PersonImperialSet extends PersonSet{
-//list with imperial data
-private ArrayList<Person> imperialList;
-	//constructor
-	public PersonImperialSet()
-	{
-		imperialList = new ArrayList<Person>();
-	}
-
 	@Override
 	//method first converts the current
 	//persons height and weight to imperial
-	//and then adds them to the imperialList
+	//and then adds them to the list
 	//if they are not already in the list
 	public void add(Person person)
 	{
@@ -25,9 +17,8 @@ private ArrayList<Person> imperialList;
 		person.convertHeight();
 		person.convertWeight();
 		//add to list if not already in list
-		if(!(imperialList.contains(person)))
+		if(!(listOfPeople.contains(person)))
 		{
-			imperialList.add(person);
 			super.add(person);
 		}
 	}
@@ -41,7 +32,7 @@ private ArrayList<Person> imperialList;
 		String header = String.format("%-9s %-12s %-12s\n", 
 				"Name", "Height (in)", "Weight (lb)");
 		//create table
-		finalList = header + super.toString(imperialList);
+		finalList = header + super.toString();
 		System.out.println(finalList);
 		return finalList;
 	}
