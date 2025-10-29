@@ -18,9 +18,31 @@ public class Node
 	//set/get left
 	public Node getLeft() {return this.left;}
 	public void setLeft(Node newLeft) {this.left = newLeft;}
+	public boolean hasLeft()
+	{
+		if (this.left == null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 	//set/get right
 	public Node getRight() {return this.right;}
 	public void setRight(Node newRight) {this.right = newRight;}
+	public boolean hasRight()
+	{
+		if (this.right == null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 	//set/get parent
 	public Node getParent() {return this.parent;}
 	public void setParent(Node newParent) {this.parent = newParent;}
@@ -28,6 +50,18 @@ public class Node
 	public String getName()
 	{
 		return this.person.getName();
+	}
+	
+	public boolean hasNext()
+	{
+		if(this.right == null && this.left == null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	
 }

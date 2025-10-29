@@ -97,8 +97,8 @@ public class Main
 		{
 			treeSet.add(set.getList().get(i));
 		}
-		
 		System.out.println(treeSet.listTest());
+		System.out.println(treeSet.toString());
 		
 		/*
 		System.out.println("Alphapetically Ordered:");

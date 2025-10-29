@@ -58,6 +58,9 @@ public class SortedTreeSet implements SortedTreeSetInterface
 		return this.totalTree;
 	}
 
+	//=================================================
+	//ADD
+	//=================================================
 	@Override
 	public void add(Person p) 
 	{
@@ -89,6 +92,7 @@ public class SortedTreeSet implements SortedTreeSetInterface
 						newPerson.setParent(current);
 						current = current.getRight();
 						System.out.println("Added " + current.getName() + " to right\n");
+						System.out.println("New's parent is " + current.getParent().getName());
 						totalTree += (newPerson.getName() + "\n");
 					}
 					else {current = current.getRight();}
@@ -102,12 +106,73 @@ public class SortedTreeSet implements SortedTreeSetInterface
 						newPerson.setParent(current);
 						current = current.getLeft();
 						System.out.println("Added " + current.getName() + " to left\n");
+						System.out.println("New's parent is " + current.getParent().getName());
 						totalTree += (newPerson.getName() + "\n");
 					}
 					else {current = current.getLeft();}
 				}
 			}//while(current != newPerson)
 		}
+	}//End of add()
+	
+	//===================================================================== 
+    //toString()
+	//=====================================================================
+	
+	@Override
+	public String toString()
+	{
+		String toReturn = "";
+		Node current = head;
+		//left
+		while(current.getLeft() != null)
+		{
+			current = current.getLeft();
+		}
+		
+		Node farLeft = current;
+		
+		while(farLeft != head)
+		{
+			toReturn += farLeft.getName() + "\n";
+			toReturn += farLeft.getParent().getName() + "\n";
+			if (farLeft.getParent().hasRight() == true)
+			{
+				toReturn += farLeft.getParent().getRight().getName() + "\n";
+			}
+			farLeft = farLeft.getParent().getParent();
+		}
+		if(farLeft == head)
+		{
+			toReturn += farLeft.getName() + "\n";
+		}
+		
+		Node farRight = head.getRight();
+		while(farRight.hasNext())
+		{
+			if(farRight.hasRight() == true)
+			{
+				farRight = farRight.getRight();
+			}
+			else
+			{
+				farRight = farRight.getLeft();
+			}
+		} 
+		while (farRight != head)
+		{
+			toReturn += farRight.getName() + "\n";
+			toReturn += farRight.getParent().getName() + "\n";
+			if (farRight.getParent().hasRight() == true)
+			{
+				toReturn += farRight.getParent().getRight().getName() + "\n";
+			}
+			farRight = farRight.getParent().getParent();
+		}
+		return toReturn;
+		
+		//root
+		
+		//right
 	}
-
 }
