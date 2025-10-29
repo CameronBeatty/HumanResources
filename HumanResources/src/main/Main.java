@@ -57,6 +57,7 @@ public class Main
 		PersonSet set = new PersonSet();
 		PersonOrderedSet orderedSet = new PersonOrderedSet();
 		PersonImperialSet imperialSet = new PersonImperialSet();
+		SortedTreeSet treeSet = new SortedTreeSet();
 		
 		//Try to read in data from file on arg[0]
 		try
@@ -81,8 +82,7 @@ public class Main
 				Person person = new Person(name, weight, height);
 				Person convertP = new Person(person);
 				//add the person to the set
-				orderedSet.add(person);
-				imperialSet.add(convertP);
+				set.add(person);
 			}
 			fileReader.close();
 		}
@@ -93,11 +93,22 @@ public class Main
 			System.exit(1);
 		}
 
+		for(int i = 0; i < set.getList().size(); i++)
+		{
+			treeSet.add(set.getList().get(i));
+		}
+		
+		System.out.println(treeSet.listTest());
+		
+		/*
 		System.out.println("Alphapetically Ordered:");
 		String orderedList = orderedSet.createList();
 		System.out.println("Imperial Conversion:");
 		String imperialList = imperialSet.createList();
-
+		*/
+		
+		
+		/*
 		//FILE WRITING
 		try
 		{	
@@ -122,6 +133,9 @@ public class Main
 			System.out.println(e);
 			System.exit(1);
 		}
+		*/
+		
+		
 		
 	}//END main method 
 }//END public class Main

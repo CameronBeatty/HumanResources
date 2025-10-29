@@ -25,7 +25,15 @@ public class PersonSet implements PersonList {
 	//is not yet in the list
 	public void add(Person person)
 	{
-		listOfPeople.add(person);
+		if(listOfPeople.contains(person) == false)
+		{
+			listOfPeople.add(person);
+		}
+	}
+	
+	public ArrayList<Person> getList()
+	{
+		return this.listOfPeople;
 	}
 	
 	//Receives an index from main
