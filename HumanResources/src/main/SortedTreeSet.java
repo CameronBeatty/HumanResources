@@ -1,5 +1,7 @@
 package main;
-
+//Sorted Tree Set stores and organizes alphabetically
+//Nodes containing Nintendo characters HR data and
+//formats all of it to a data sheet written out to file
 public class SortedTreeSet implements SortedTreeSetInterface
 {
 	private Node head;
@@ -64,6 +66,7 @@ public class SortedTreeSet implements SortedTreeSetInterface
 	@Override
 	public void add(Person p) 
 	{
+		//new person
 		Node newPerson = new Node(p);
 		System.out.println("New Person: " + newPerson.getName() + "\n");
 		//if the list is empty, first 
@@ -74,18 +77,25 @@ public class SortedTreeSet implements SortedTreeSetInterface
 			head = newPerson;
 			totalTree += (newPerson.getName() + "\n");
 		}
-		//comes after head
+		//Else the new person is not the first and must 
+		//be compared alphabetically to the other items in the list
 		else 
 		{
 			Node current = head;
+			//While we have not added the new person
 			while(current != newPerson)
 			{
+				//TEST
 				System.out.println("While current != newPerson\n");
 				System.out.println("Current: " + current.getName() + " \n" + "New Person: "
 								+ newPerson.getName() + "\n");
+				//If the new person is further in the alphabet then
+				//the current person in the list being checked
 				if(newPerson.getName().charAt(0) > current.getName().charAt(0))
 				{
 					System.out.println(newPerson.getName() + " should go to right");
+					//if the next right branch is empty
+					//the newPerson takes that position
 					if(current.getRight() == null)
 					{
 						current.setRight(newPerson);
@@ -95,11 +105,16 @@ public class SortedTreeSet implements SortedTreeSetInterface
 						System.out.println("New's parent is " + current.getParent().getName());
 						totalTree += (newPerson.getName() + "\n");
 					}
+					//Else there is another person to the right who must
+					//be checked, so they become current, and the loop repeats
 					else {current = current.getRight();}
-				}
+				}//END right branch
+				//The new person goes before the current person being checked
 				else
 				{
 					System.out.println(newPerson.getName() + " should go to left");
+					//if the next left branch is empty
+					//the new person takes that position
 					if(current.getLeft() == null)
 					{
 						current.setLeft(newPerson);
@@ -109,10 +124,12 @@ public class SortedTreeSet implements SortedTreeSetInterface
 						System.out.println("New's parent is " + current.getParent().getName());
 						totalTree += (newPerson.getName() + "\n");
 					}
+					//Else there is another person to the left who must
+					//be checked, they become current and the loop repeats
 					else {current = current.getLeft();}
-				}
-			}//while(current != newPerson)
-		}
+				}//END of left branch else
+			}//END while(current != newPerson)
+		}//END else NOT first person in list
 	}//End of add()
 	
 	//===================================================================== 
@@ -122,7 +139,9 @@ public class SortedTreeSet implements SortedTreeSetInterface
 	@Override
 	public String toString()
 	{
-		String toReturn = "";
+		String header = String.format("%-9s %-12s %-12s\n", 
+				"Name", "Height (cm)", "Weight (kg)");
+		String toReturn = header;
 		Node current = head;
 		//left
 		while(current.getLeft() != null)
@@ -134,17 +153,17 @@ public class SortedTreeSet implements SortedTreeSetInterface
 		
 		while(farLeft != head)
 		{
-			toReturn += farLeft.getName() + "\n";
-			toReturn += farLeft.getParent().getName() + "\n";
+			toReturn += farLeft.toString() + "\n";
+			toReturn += farLeft.getParent().toString() + "\n";
 			if (farLeft.getParent().hasRight() == true)
 			{
-				toReturn += farLeft.getParent().getRight().getName() + "\n";
+				toReturn += farLeft.getParent().getRight().toString() + "\n";
 			}
 			farLeft = farLeft.getParent().getParent();
 		}
 		if(farLeft == head)
 		{
-			toReturn += farLeft.getName() + "\n";
+			toReturn += farLeft.toString() + "\n";
 		}
 		
 		Node farRight = head.getRight();
@@ -161,11 +180,11 @@ public class SortedTreeSet implements SortedTreeSetInterface
 		} 
 		while (farRight != head)
 		{
-			toReturn += farRight.getName() + "\n";
-			toReturn += farRight.getParent().getName() + "\n";
+			toReturn += farRight.toString() + "\n";
+			toReturn += farRight.getParent().toString() + "\n";
 			if (farRight.getParent().hasRight() == true)
 			{
-				toReturn += farRight.getParent().getRight().getName() + "\n";
+				toReturn += farRight.getParent().getRight().toString() + "\n";
 			}
 			farRight = farRight.getParent().getParent();
 		}

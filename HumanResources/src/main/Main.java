@@ -107,24 +107,25 @@ public class Main
 		String imperialList = imperialSet.createList();
 		*/
 		
-		
-		/*
 		//FILE WRITING
 		try
 		{	
 			//two file writers, one for each file
 			//alphabetically sorted data and 
 			//metric to imperial data
-			FileWriter orderedFw = new FileWriter("hr_ordered_set_output.txt");
-			FileWriter imperialFw = new FileWriter("hr_imperial_set_output.txt");
+			//FileWriter orderedFw = new FileWriter("hr_ordered_set_output.txt");
+			//FileWriter imperialFw = new FileWriter("hr_imperial_set_output.txt");
+			FileWriter treeSetOutputFW = new FileWriter("hr_tree_set_output.txt");
+			treeSetOutputFW.write(treeSet.toString());
+			treeSetOutputFW.close();
 			//write the files using
 			//the string from the createList
 			//methods in both sets
-			orderedFw.write(orderedList);
-			imperialFw.write(imperialList);
+			//orderedFw.write(orderedList);
+			//imperialFw.write(imperialList);
 			//close file writers
-			orderedFw.close();
-			imperialFw.close();
+			//orderedFw.close();
+			//imperialFw.close();
 		}
 		//catch input/output errors
 		catch(IOException e)
@@ -133,9 +134,6 @@ public class Main
 			System.out.println(e);
 			System.exit(1);
 		}
-		*/
-		
-		
-		
+	
 	}//END main method 
 }//END public class Main
