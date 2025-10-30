@@ -4,7 +4,7 @@ package main;
 //by storing that instance of the
 //person object. These nodes are
 //used for a Tree Data Set
-public class Node 
+public class Node implements NodeInterface
 {
 	private Person person;
 	private Node left;

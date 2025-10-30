@@ -9,5 +9,5 @@ public interface PersonList
 	
 	//Takes int as input as returns a Person at
 	//the corresponding index of the input
-	Person get(int index);
+	Person getPersonAt(int index);
 }
